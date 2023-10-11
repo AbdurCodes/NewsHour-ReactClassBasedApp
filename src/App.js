@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React, { Component } from 'react'
+import Navbar from './components/Navbar';
+import News from './components/News';
+// import { useState } from 'react';
 
-export default App;
+
+
+export default class App extends Component {
+
+  name = 'AbdurCodes';
+  render() {
+    
+
+
+
+
+      // .then(async function(response) {
+      //   let resp = await response.json();
+      //   console.log(response.json());
+    
+
+    // let apiURL = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=ac0b11c66fbf42b3a0482ef6bb62b17d"
+
+          // let {title} = resp.title;
+          // let description = resp.description;
+          // let url = resp.url;
+          // let urlToImage = resp.urlToImage;
+// })
+    return (
+      <div>
+        <Navbar/>
+        <News pageSize={3}/>
+      </div>
+    )
+  }
+}
