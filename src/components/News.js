@@ -1,8 +1,24 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
+import PropTypes from 'prop-types'
+
+
 
 export default class News extends Component {
+  // default values of props but it can be overridden by passing a different value to the component
+  static defaultProps = {
+    category: 'general',
+    country: 'us',
+    pageSize: 12,
+  }
+
+  // property used to define the data types of the props that the component expects to receive
+  static propTypes = {
+    category: PropTypes.string,
+    country: PropTypes.string,
+    pageSize: PropTypes.number,
+  }
 
 
   constructor() {
