@@ -85,6 +85,7 @@ export default class News extends Component {
               return (
                 <div className="col-md-4" key={index}>
                   <NewsItem
+                    publishedAt={article.publishedAt}
                     title={article.title}
                     description={article.description}
                     url={article.url}

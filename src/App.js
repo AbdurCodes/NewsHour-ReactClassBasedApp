@@ -3,14 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Component } from "react";
 import Navbar from "./components/Navbar";
 import News from "./components/News";
-// import { useState } from 'react';
-import Business from "./pages/Business";
-import Entertainment from "./pages/Entertainment";
-import General from "./pages/General";
-import Health from "./pages/Health";
-import Science from "./pages/Science";
-import Sports from "./pages/Sports";
-import Technology from "./pages/Technology";
 import About from "./pages/About";
 
 
@@ -37,58 +29,61 @@ export default class App extends Component {
           <Routes>
 
             <Route
-              path="/"
-              exact
-              element={ <>
+              path="/" exact element={ <>
                 <h1 className='text-center mt-4'>News Homepage</h1>
-              <News pageSize={12} category={"general"} country={"us"} /> 
-              </>
-            }
+              <News key='general' pageSize={12} category={"general"} country={"us"} /> 
+              </>} 
             />
 
             <Route
-             path="/about" 
-             exact
-             element={<About />}>
-            </Route>
+             path="/about" exact element={ <>
+             <h1 style={{color: "green"}} className='text-center mt-4'>About NewsHour</h1>
+             <About />
+             </>} 
+            />
 
             <Route
-             path="/business" 
-             exact
-             element={<Business />}>
-            </Route>
+              path="/business" exact element={ <>
+                <h1 className='text-center mt-4'>Business News</h1>
+              <News key='business' pageSize={12} category={"business"} country={"us"} /> 
+              </>} 
+            />
 
             <Route
-             path="/entertainment" 
-             exact
-             element={<Entertainment />}>
-            </Route>
+              path="/entertainment" exact element={ <>
+                <h1 className='text-center mt-4'>Entertainment News</h1>
+              <News key='entertainment' pageSize={12} category={"entertainment"} country={"us"} /> 
+              </>} 
+            />
 
             <Route
-             path="/general" 
-             exact
-             element={<General />}>
-            </Route>
+              path="/health" exact element={ <>
+                <h1 className='text-center mt-4'>Health News</h1>
+              <News key='health' pageSize={12} category={"health"} country={"us"} /> 
+              </>} 
+            />
+
             <Route
-             path="/health" 
-             exact
-             element={<Health />}>
-            </Route>
+              path="/science" exact element={ <>
+                <h1 className='text-center mt-4'>Science News</h1>
+              <News key='science' pageSize={12} category={"science"} country={"us"} /> 
+              </>} 
+            />
+
             <Route
-             path="/science" 
-             exact
-             element={<Science />}>
-            </Route>
+              path="/sports" exact element={ <>
+                <h1 className='text-center mt-4'>Sports News</h1>
+              <News key='sports' pageSize={12} category={"sports"} country={"us"} /> 
+              </>} 
+            />
+
+
             <Route
-             path="/sports" 
-             exact
-             element={<Sports />}>
-            </Route>
-            <Route
-             path="/technology" 
-             exact
-             element={<Technology />}>
-            </Route>
+              path="/technology" exact element={ <>
+                <h1 className='text-center mt-4'>Technology News</h1>
+              <News key='technology' pageSize={12} category={"technology"} country={"us"} /> 
+              </>} 
+            />
 
 
               {/* <Route path="*" element={<NoPage />} /> */}
