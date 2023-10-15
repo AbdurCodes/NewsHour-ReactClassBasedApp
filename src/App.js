@@ -7,19 +7,9 @@ import About from "./pages/About";
 
 
 export default class App extends Component {
-  name = "AbdurCodes";
+  pageSize = 15;
+  country = "in"
   render() {
-    // .then(async function(response) {
-    //   let resp = await response.json();
-    //   console.log(response.json());
-
-    // let apiURL = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=ac0b11c66fbf42b3a0482ef6bb62b17d"
-
-    // let {title} = resp.title;
-    // let description = resp.description;
-    // let url = resp.url;
-    // let urlToImage = resp.urlToImage;
-    // })
     return (
       <div>
         <BrowserRouter>
@@ -31,7 +21,7 @@ export default class App extends Component {
             <Route
               path="/" exact element={ <>
                 <h1 className='text-center mt-4'>News Homepage</h1>
-              <News key='general' pageSize={12} category={"general"} country={"us"} /> 
+              <News key='general' pageSize={this.pageSize} category={"general"} country={this.country} /> 
               </>} 
             />
 
@@ -45,35 +35,35 @@ export default class App extends Component {
             <Route
               path="/business" exact element={ <>
                 <h1 className='text-center mt-4'>Business News</h1>
-              <News key='business' pageSize={12} category={"business"} country={"us"} /> 
+              <News key='business' pageSize={this.pageSize} category={"business"} country={this.country} /> 
               </>} 
             />
 
             <Route
               path="/entertainment" exact element={ <>
                 <h1 className='text-center mt-4'>Entertainment News</h1>
-              <News key='entertainment' pageSize={12} category={"entertainment"} country={"us"} /> 
+              <News key='entertainment' pageSize={this.pageSize} category={"entertainment"} country={this.country} /> 
               </>} 
             />
 
             <Route
               path="/health" exact element={ <>
                 <h1 className='text-center mt-4'>Health News</h1>
-              <News key='health' pageSize={12} category={"health"} country={"us"} /> 
+              <News key='health' pageSize={this.pageSize} category={"health"} country={this.country} /> 
               </>} 
             />
 
             <Route
               path="/science" exact element={ <>
                 <h1 className='text-center mt-4'>Science News</h1>
-              <News key='science' pageSize={12} category={"science"} country={"us"} /> 
+              <News key='science' pageSize={this.pageSize} category={"science"} country={this.country} /> 
               </>} 
             />
 
             <Route
               path="/sports" exact element={ <>
                 <h1 className='text-center mt-4'>Sports News</h1>
-              <News key='sports' pageSize={12} category={"sports"} country={"us"} /> 
+              <News key='sports' pageSize={this.pageSize} category={"sports"} country={this.country} /> 
               </>} 
             />
 
@@ -81,7 +71,7 @@ export default class App extends Component {
             <Route
               path="/technology" exact element={ <>
                 <h1 className='text-center mt-4'>Technology News</h1>
-              <News key='technology' pageSize={12} category={"technology"} country={"us"} /> 
+              <News key='technology' pageSize={this.pageSize} category={"technology"} country={this.country} /> 
               </>} 
             />
 

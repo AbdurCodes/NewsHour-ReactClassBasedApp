@@ -31,47 +31,34 @@ export default class News extends Component {
   }
 
 
-    
-
-  async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&category=business&apiKey=ac0b11c66fbf42b3a0482ef6bb62b17d&pageSize=${this.props.pageSize}`;
+  async updateNews () {
+    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&category=business&apiKey=ac0b11c66fbf42b3a0482ef6bb62b17d&pageSize=${this.props.pageSize}&page=${this.state.page}`;
     this.setState({loading: true})
     let data = await fetch(url);
     let jsonData = await data.json();
-    this.setState({ 
+    this.setState({
       articles: jsonData.articles,
       totalResults: jsonData.totalResults,
       loading: false
     });
   }
+    
+
+  async componentDidMount() {
+    this.updateNews();
+  }
 
   handlePrevious = async () => {
     console.log("Previous clicked");
-    let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&category=business&apiKey=ac0b11c66fbf42b3a0482ef6bb62b17d&pageSize=${this.props.pageSize}&page=${this.state.page - 1}`;
-    this.setState({loading: true})
-    let data = await fetch(url);
-    let jsonData = await data.json();
-    this.setState({
-      page: this.state.page - 1,
-      articles: jsonData.articles,
-      totalResults: jsonData.totalResults,
-      loading: false
-    });
+    this.setState({page: this.state.page - 1});
+    this.updateNews();
   };
 
   handleNext = async () => {
     console.log("Next clicked");
     if (this.state.page < Math.ceil(this.state.totalResults / this.props.pageSize)) {
-      let url = `https://newsapi.org/v2/top-headlines?category=${this.props.category}&country=${this.props.country}&category=business&apiKey=ac0b11c66fbf42b3a0482ef6bb62b17d&pageSize=${this.props.pageSize}&page=${this.state.page + 1}`;
-      this.setState({loading: true})
-      let data = await fetch(url);
-      let jsonData = await data.json(); // To get the body of the response
-      this.setState({
-        page: this.state.page + 1,
-        articles: jsonData.articles,
-        totalResults: jsonData.totalResults,
-        loading: false
-      });
+      this.setState({page: this.state.page + 1});
+      this.updateNews();
     }
   };
 
@@ -82,10 +69,13 @@ export default class News extends Component {
         {!this.state.loading && <div className="container">
           <div className="row">
             {this.state.articles.map((article, index) => {
+              console.log(article);
               return (
                 <div className="col-md-4" key={index}>
                   <NewsItem
                     publishedAt={article.publishedAt}
+                    source={article.source.name}
+                    author={article.author}
                     title={article.title}
                     description={article.description}
                     url={article.url}
